@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "IMovies API Collection",
+    "description": "Postman API collection for testing IMovies cinema booking platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/auth/register", "host": ["http://localhost:5000"], "path": ["api", "auth", "register"] }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/auth/login", "host": ["http://localhost:5000"], "path": ["api", "auth", "login"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Movies",
+      "item": [
+        {
+          "name": "Get All Movies",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:5000/api/movies", "host": ["http://localhost:5000"], "path": ["api", "movies"] }
+          }
+        },
+        {
+          "name": "Get Movie By ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:5000/api/movies/:id", "host": ["http://localhost:5000"], "path": ["api", "movies", ":id"] }
+          }
+        },
+        {
+          "name": "Get Showtimes For Movie",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:5000/api/movies/:id/showtimes", "host": ["http://localhost:5000"], "path": ["api", "movies", ":id", "showtimes"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Showtimes",
+      "item": [
+        {
+          "name": "Get Showtime With Seats",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:5000/api/showtimes/:id", "host": ["http://localhost:5000"], "path": ["api", "showtimes", ":id"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"showtimeId\": \"<SHOWTIME_ID>\",\n  \"seats\": [\"A1\", \"A2\"]\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/bookings", "host": ["http://localhost:5000"], "path": ["api", "bookings"] }
+          }
+        },
+        {
+          "name": "Get My Bookings",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{jwt_token}}" }],
+            "url": { "raw": "http://localhost:5000/api/bookings/me", "host": ["http://localhost:5000"], "path": ["api", "bookings", "me"] }
+          }
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{jwt_token}}" }],
+            "url": { "raw": "http://localhost:5000/api/bookings/:id", "host": ["http://localhost:5000"], "path": ["api", "bookings", ":id"] }
+          }
+        }
+      ]
+    }
+  ]
+}

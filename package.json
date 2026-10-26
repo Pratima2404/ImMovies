@@ -1,0 +1,16 @@
+{
+  "name": "imovies-cinema-platform",
+  "version": "1.0.0",
+  "description": "IMovies Full Stack Cinema Reservation Platform",
+  "scripts": {
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "install-all": "npm run install-server && npm run install-client",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "seed": "cd server && npm run seed"
+  },
+  "keywords": ["mern", "cinema-booking", "react", "express", "mongodb"],
+  "author": "Pratima",
+  "license": "ISC"
+}
