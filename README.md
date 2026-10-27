@@ -83,3 +83,4 @@ JWT_SECRET=supersecretjwtkey_imovies_2026
 
 ## 📬 Postman Collection
 Import `postman_collection.json` directly into Postman to test all endpoints (`/api/auth`, `/api/movies`, `/api/showtimes`, `/api/bookings`).
+
